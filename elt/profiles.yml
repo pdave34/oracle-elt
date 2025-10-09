@@ -1,0 +1,10 @@
+dbt_test:
+   target: "{{ env_var('DBT_TARGET', 'dev') }}"
+   outputs:
+      dev:
+         type: oracle
+         user: "SYSDBA"
+         pass: "Vaishali7?"
+         database: "D7WOB1D1" 
+         schema: "dbt_user"
+         connection_string: "DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME = D7WOB1D1))"
