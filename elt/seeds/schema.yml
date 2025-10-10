@@ -1,0 +1,24 @@
+version: 2
+
+seeds:
+  - name: RAW_TAXI_ZONES
+    columns:
+      - name: LocationID
+        data_tests:
+          - unique
+          - not_null
+      - name: Borough
+        data_tests:
+          - not_null
+      - name: Zone
+        data_tests:
+          - not_null
+      - name: service_zone
+        data_tests:
+          - not_null
+    config:
+      column_types:
+        LocationID: NUMBER(4)
+        Borough: VARCHAR2(50)
+        Zone: VARCHAR2(50)
+        service_zone: VARCHAR2(50)
