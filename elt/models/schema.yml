@@ -1,4 +1,3 @@
-
 version: 2
 
 sources:
@@ -51,6 +50,11 @@ models:
   - name: stg_yellow_taxi
     description: "Cleaned yellow taxi data"
     columns:
+      - name: trip_id
+        description: "Primary key for the table."
+        tests:
+          - unique
+          - not_null
       - name: vendor_id
         description: 'TPEP provider code.'
       - name: pickup_datetime
@@ -89,4 +93,3 @@ models:
         description: 'Congestion surcharge amount.'
       - name: airport_fee
         description: 'Airport fee for pickups.'
-

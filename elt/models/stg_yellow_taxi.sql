@@ -1,8 +1,8 @@
-
 WITH source AS (
-    SELECT * FROM {{ source('pdave', 'RAW_YELLOW_TAXI') }}
+    SELECT ROWNUM as rn, a.* FROM {{ source('pdave', 'RAW_YELLOW_TAXI') }} a
 )
 SELECT
+    {{ dbt_utils.generate_surrogate_key(['rn']) }} AS trip_id,
     "VENDORID" AS vendor_id,
     CAST("TPEP_PICKUP_DATETIME" AS TIMESTAMP) AS pickup_datetime,
     CAST("TPEP_DROPOFF_DATETIME" AS TIMESTAMP) AS dropoff_datetime,
