@@ -3,8 +3,13 @@ dbt_test:
    outputs:
       dev:
          type: oracle
-         user: "SYSDBA"
-         pass: "Vaishali7?"
+         user: "PDAVE"
+         pass: "root"
          database: "D7WOB1D1" 
-         schema: "dbt_user"
-         connection_string: "DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME = D7WOB1D1))"
+         service: "D7WOB1D1"
+         schema: "PDAVE"
+         host: "localhost"
+         protocol: "tcp"
+         port: 1521
+         threads: 4
+#         connection_string: "DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME = D7WOB1D1))"

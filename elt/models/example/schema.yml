@@ -2,20 +2,6 @@
 version: 2
 
 models:
-  - name: my_first_dbt_model
+  - name: calendar
     description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
-
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
-          - not_null
+    pre-hook: "DROP TABLE IF EXISTS pdave.my_first_dbt_model;"
