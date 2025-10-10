@@ -12,14 +12,14 @@ with date_series as (
   connect by level <= to_date('{{ var("end_date", "2099-12-31") }}', 'YYYY-MM-DD') - to_date('{{ var("start_date", "2000-01-01") }}', 'YYYY-MM-DD') + 1
 )
 select
-  calendar_date as "date",
-  to_number(to_char(calendar_date, 'YYYY')) as "year",
-  to_number(to_char(calendar_date, 'MM')) as "month",
-  to_number(to_char(calendar_date, 'DD')) as "day",
-  to_number(to_char(calendar_date, 'Q')) as "quarter",
-  to_number(to_char(calendar_date, 'WW')) as "week",
-  to_number(to_char(calendar_date, 'ID')) as "isodow",
-  to_number(to_char(calendar_date, 'DDD')) as "doy",
-  to_number(to_char(calendar_date, 'IYYY')) as "iso_year_num"
+  calendar_date as "DATE",
+  to_number(to_char(calendar_date, 'YYYY')) as "YEAR",
+  to_number(to_char(calendar_date, 'MM')) as "MONTH",
+  to_number(to_char(calendar_date, 'DD')) as "DAY",
+  to_number(to_char(calendar_date, 'Q')) as "QUARTER",
+  to_number(to_char(calendar_date, 'WW')) as "WEEK",
+  to_number(to_char(calendar_date, 'ID')) as "ISODOW",
+  to_number(to_char(calendar_date, 'DDD')) as "DOY",
+  to_number(to_char(calendar_date, 'IYYY')) as "ISO_YEAR_NUM"
 from
   date_series
