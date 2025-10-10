@@ -1,11 +1,10 @@
 
 {{
   config(
-    materialized='table',
-    full_refresh=True,
-    post_hook='CREATE INDEX {{ "idx_" ~ this.name ~ "_date" }} ON {{ this }} ("date")'
-  )
-}}
+    materialized='incremental',
+    unique_key='date',
+    incremental_strategy='delete+insert'
+) }}
 
 with date_series as (
   select
