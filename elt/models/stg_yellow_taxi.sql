@@ -35,8 +35,8 @@ renamed AS (
     SELECT
         rn AS trip_id,
         "VENDORID" AS vendor_id,
-        TO_TIMESTAMP("TPEP_PICKUP_DATETIME", 'YYYY-MM-DD HH24:MI:SS') AS pickup_datetime,
-        TO_TIMESTAMP("TPEP_DROPOFF_DATETIME", 'YYYY-MM-DD HH24:MI:SS') AS dropoff_datetime,
+        "TPEP_PICKUP_DATETIME" AS pickup_datetime,
+        "TPEP_DROPOFF_DATETIME" AS dropoff_datetime,
         NVL("PASSENGER_COUNT", 0) AS passenger_count,
         CASE WHEN "TRIP_DISTANCE" < 0 THEN 0 ELSE "TRIP_DISTANCE" END AS trip_distance,
         "RATECODEID" AS rate_code_id,
@@ -58,5 +58,10 @@ renamed AS (
 
 )
 
-SELECT *
-FROM renamed
+SELECT RR.*, pickup_borough.Borough AS pickup_borough, pickup_borough.Zone AS pickup_zone, pickup_borough.service_zone AS pickup_service_zone,
+       dropoff_borough.Borough AS dropoff_borough, dropoff_borough.Zone AS dropoff_zone, dropoff_borough.service_zone AS dropoff_service_zone
+FROM renamed RR
+LEFT JOIN {{ref('RAW_TAXI_ZONES')}} pickup_borough
+    ON RR.pickup_location_id = pickup_borough.LOCATIONID
+LEFT JOIN {{ref('RAW_TAXI_ZONES')}} dropoff_borough
+    ON RR.dropoff_location_id = dropoff_borough.LOCATIONID
