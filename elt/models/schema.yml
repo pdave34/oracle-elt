@@ -1,3 +1,4 @@
+
 version: 2
 
 sources:
@@ -93,3 +94,12 @@ models:
         description: 'Congestion surcharge amount.'
       - name: airport_fee
         description: 'Airport fee for pickups.'
+  - name: mart_yellow_taxi
+    description: "Yellow taxi data with trip and time features."
+    columns:
+      - name: trip_duration_minutes
+        description: 'Trip duration in minutes.'
+      - name: average_speed_mph
+        description: 'Average speed in miles per hour.'
+      - name: pickup_hour
+        description: 'Pickup hour of the day.'
