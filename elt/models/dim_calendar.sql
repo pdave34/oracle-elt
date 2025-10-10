@@ -1,9 +1,7 @@
 
 {{
   config(
-    materialized='incremental',
-    unique_key='date',
-    incremental_strategy='delete+insert'
+    materialized='table'
 ) }}
 
 with date_series as (

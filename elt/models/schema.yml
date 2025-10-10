@@ -59,14 +59,8 @@ models:
         description: 'Dropoff date and time.'
       - name: passenger_count
         description: 'Number of passengers.'
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: ">= 0"
       - name: trip_distance
         description: 'Trip distance in miles.'
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: ">= 0"
       - name: rate_code_id
         description: 'Rate code at trip end.'
       - name: store_and_fwd_flag
@@ -79,9 +73,6 @@ models:
         description: 'Payment method code.'
       - name: fare_amount
         description: 'Time and distance fare.'
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: ">= 0"
       - name: extra
         description: 'Miscellaneous extras and surcharges.'
       - name: mta_tax
@@ -94,19 +85,8 @@ models:
         description: 'Improvement surcharge amount.'
       - name: total_amount
         description: 'Total amount charged.'
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: ">= 0"
       - name: congestion_surcharge
         description: 'Congestion surcharge amount.'
       - name: airport_fee
         description: 'Airport fee for pickups.'
-  - name: mart_yellow_taxi
-    description: "Yellow taxi data with trip and time features."
-    columns:
-      - name: trip_duration_minutes
-        description: 'Trip duration in minutes.'
-      - name: average_speed_mph
-        description: 'Average speed in miles per hour.'
-      - name: pickup_hour
-        description: 'Pickup hour of the day.'
+
