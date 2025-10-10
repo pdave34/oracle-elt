@@ -1,7 +1,0 @@
-
-version: 2
-
-models:
-  - name: calendar
-    description: "A starter dbt model"
-    pre-hook: "DROP TABLE IF EXISTS pdave.my_first_dbt_model;"

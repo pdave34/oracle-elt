@@ -22,6 +22,6 @@ select
   to_number(to_char(calendar_date, 'WW')) as "week",
   to_number(to_char(calendar_date, 'ID')) as "isodow",
   to_number(to_char(calendar_date, 'DDD')) as "doy",
-  to_number(to_char(calendar_date, 'IYYY')) as "isoyear"
+  to_number(to_char(calendar_date, 'IYYY')) as "iso_year_num"
 from
   date_series

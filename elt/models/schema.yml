@@ -1,0 +1,112 @@
+
+version: 2
+
+sources:
+  - name: pdave
+    tables:
+      - name: RAW_YELLOW_TAXI
+        columns:
+          - name: VENDORID
+            description: 'TPEP provider code.'
+          - name: TPEP_PICKUP_DATETIME
+            description: 'Pickup date and time.'
+          - name: TPEP_DROPOFF_DATETIME
+            description: 'Dropoff date and time.'
+          - name: PASSENGER_COUNT
+            description: 'Number of passengers.'
+          - name: TRIP_DISTANCE
+            description: 'Trip distance in miles.'
+          - name: RATECODEID
+            description: 'Rate code at trip end.'
+          - name: STORE_AND_FWD_FLAG
+            description: 'Indicates if trip data was stored.'
+          - name: PULOCATIONID
+            description: 'Pickup location zone.'
+          - name: DOLOCATIONID
+            description: 'Dropoff location zone.'
+          - name: PAYMENT_TYPE
+            description: 'Payment method code.'
+          - name: FARE_AMOUNT
+            description: 'Time and distance fare.'
+          - name: EXTRA
+            description: 'Miscellaneous extras and surcharges.'
+          - name: MTA_TAX
+            description: 'MTA tax amount.'
+          - name: TIP_AMOUNT
+            description: 'Credit card tip amount.'
+          - name: TOLLS_AMOUNT
+            description: 'Total toll amount.'
+          - name: IMPROVEMENT_SURCHARGE
+            description: 'Improvement surcharge amount.'
+          - name: TOTAL_AMOUNT
+            description: 'Total amount charged.'
+          - name: CONGESTION_SURCHARGE
+            description: 'Congestion surcharge amount.'
+          - name: AIRPORT_FEE
+            description: 'Airport fee for pickups.'
+
+models:
+  - name: dim_calendar
+    description: "A calendar dimension table"
+  - name: stg_yellow_taxi
+    description: "Cleaned yellow taxi data"
+    columns:
+      - name: vendor_id
+        description: 'TPEP provider code.'
+      - name: pickup_datetime
+        description: 'Pickup date and time.'
+      - name: dropoff_datetime
+        description: 'Dropoff date and time.'
+      - name: passenger_count
+        description: 'Number of passengers.'
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: trip_distance
+        description: 'Trip distance in miles.'
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: rate_code_id
+        description: 'Rate code at trip end.'
+      - name: store_and_fwd_flag
+        description: 'Indicates if trip data was stored.'
+      - name: pickup_location_id
+        description: 'Pickup location zone.'
+      - name: dropoff_location_id
+        description: 'Dropoff location zone.'
+      - name: payment_type
+        description: 'Payment method code.'
+      - name: fare_amount
+        description: 'Time and distance fare.'
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: extra
+        description: 'Miscellaneous extras and surcharges.'
+      - name: mta_tax
+        description: 'MTA tax amount.'
+      - name: tip_amount
+        description: 'Credit card tip amount.'
+      - name: tolls_amount
+        description: 'Total toll amount.'
+      - name: improvement_surcharge
+        description: 'Improvement surcharge amount.'
+      - name: total_amount
+        description: 'Total amount charged.'
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: congestion_surcharge
+        description: 'Congestion surcharge amount.'
+      - name: airport_fee
+        description: 'Airport fee for pickups.'
+  - name: mart_yellow_taxi
+    description: "Yellow taxi data with trip and time features."
+    columns:
+      - name: trip_duration_minutes
+        description: 'Trip duration in minutes.'
+      - name: average_speed_mph
+        description: 'Average speed in miles per hour.'
+      - name: pickup_hour
+        description: 'Pickup hour of the day.'
