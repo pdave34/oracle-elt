@@ -28,7 +28,7 @@
                         '{{ parsed_result_dict.get('status') }}',
                         {{ parsed_result_dict.get('execution_time') | float(0.0) }},
                         {{ parsed_result_dict.get('rows_affected') | int(0) }},
-                        TO_TIMESTAMP('{{ parsed_result_dict.get('generated_at') }}', 'YYYY-MM-DD HH24:MI:SS.FF')
+                        current_timestamp
                     )
                 {%- endset -%}
                 {%- do run_query(insert_dbt_results_query) -%}

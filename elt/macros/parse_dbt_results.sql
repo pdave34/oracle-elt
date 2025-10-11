@@ -1,8 +1,6 @@
 {% macro parse_dbt_results(results) %}
     -- Create a list of parsed results
     {%- set parsed_results = [] %}
-    -- Get generated_at from metadata
-    {% set generated_at = modules.datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f') %}
     -- Flatten results and add to list
     {% for run_result in results %}
         -- Convert the run result object to a simple dictionary
@@ -23,8 +21,7 @@
                 'resource_type': node.get('resource_type'),
                 'status': run_result_dict.get('status'),
                 'execution_time': run_result_dict.get('execution_time'),
-                'rows_affected': rows_affected,
-                'generated_at': generated_at
+                'rows_affected': rows_affected
                 }%}
         {% do parsed_results.append(parsed_result_dict) %}
     {% endfor %}
