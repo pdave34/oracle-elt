@@ -2,6 +2,15 @@ version: 2
 
 seeds:
   - name: RAW_TAXI_ZONES
+    description: "Raw data for taxi zones."
+    config:
+      column_types:
+        LocationID: NUMBER(4)
+        Borough: VARCHAR2(50)
+        Zone: VARCHAR2(50)
+        service_zone: VARCHAR2(50)
+      docs:
+        node_color: "#FF5733"
     columns:
       - name: LocationID
         data_tests:
@@ -16,9 +25,3 @@ seeds:
       - name: service_zone
         data_tests:
           - not_null
-    config:
-      column_types:
-        LocationID: NUMBER(4)
-        Borough: VARCHAR2(50)
-        Zone: VARCHAR2(50)
-        service_zone: VARCHAR2(50)
