@@ -103,3 +103,5 @@ models:
         description: 'Average speed in miles per hour.'
       - name: pickup_hour
         description: 'Pickup hour of the day.'
+  - name: dbt_run_results
+    description: "Table to store dbt run results."
