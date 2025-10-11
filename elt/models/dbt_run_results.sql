@@ -17,7 +17,8 @@ with empty_table as (
         cast('A' as nvarchar2(250)) as resource_type,
         cast('A' as nvarchar2(250)) as status,
         0.332 as execution_time,
-        10000000 as rows_affected
+        10000000 as rows_affected,
+        cast(current_timestamp as timestamp) as generated_at
     from dual
 )
 

@@ -15,7 +15,8 @@
                         resource_type,
                         status,
                         execution_time,
-                        rows_affected
+                        rows_affected,
+                        generated_at
                     ) values (
                         '{{ parsed_result_dict.get('result_id') }}',
                         '{{ parsed_result_dict.get('invocation_id') }}',
@@ -25,8 +26,9 @@
                         '{{ parsed_result_dict.get('name') }}',
                         '{{ parsed_result_dict.get('resource_type') }}',
                         '{{ parsed_result_dict.get('status') }}',
-                        '{{ parsed_result_dict.get('execution_time') }}',
-                        '{{ parsed_result_dict.get('rows_affected') }}'
+                        {{ parsed_result_dict.get('execution_time') | float(0.0) }},
+                        {{ parsed_result_dict.get('rows_affected') | int(0) }},
+                        TO_TIMESTAMP('{{ parsed_result_dict.get('generated_at') }}', 'YYYY-MM-DD HH24:MI:SS.FF')
                     )
                 {%- endset -%}
                 {%- do run_query(insert_dbt_results_query) -%}
