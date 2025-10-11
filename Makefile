@@ -16,16 +16,13 @@ stop-oracle:
 	docker stop oracle-19c
 
 dbt-debug:
-	export ORA_PYTHON_DRIVER_TYPE=thick && \
-	export ORACLE_HOME=/Users/astropd/Projects/oracle/instantclient_23_3 && \
+	source .venv/bin/activate && \
 	dbt debug --profiles-dir ./elt --project-dir ./elt
 
 dbt-build:
-	export ORA_PYTHON_DRIVER_TYPE=thick && \
-	export ORACLE_HOME=/Users/astropd/Projects/oracle/instantclient_23_3 && \
+	source .venv/bin/activate && \
 	dbt build --profiles-dir ./elt --project-dir ./elt
 
 dbt-test:
-	export ORA_PYTHON_DRIVER_TYPE=thick && \
-	export ORACLE_HOME=/Users/astropd/Projects/oracle/instantclient_23_3 && \
+	source .venv/bin/activate && \
 	dbt test --profiles-dir ./elt --project-dir ./elt
