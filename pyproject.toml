@@ -10,4 +10,8 @@ dependencies = [
     "dagster",
     "dagster-dbt",
     "dagster-webserver>=1.11.14",
+    "pandas>=2.3.3",
+    "seaborn>=0.13.2",
+    "jupyter>=1.1.1",
+    "pip>=25.2",
 ]

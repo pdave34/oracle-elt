@@ -1,6 +1,7 @@
 {{
   config(
-    materialized='table'
+    materialized='table',
+    parallel=4
 ) }}
 
 WITH L1 AS (
