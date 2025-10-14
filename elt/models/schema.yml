@@ -44,10 +44,55 @@ sources:
             description: 'Congestion surcharge amount.'
           - name: AIRPORT_FEE
             description: 'Airport fee for pickups.'
+      - name: RAW_GREEN_TRIPDATA
+
 
 models:
   - name: dim_calendar
     description: "A calendar dimension table"
+  - name: stg_green_taxi
+    description: "Cleaned green taxi data"
+    columns:
+      - name: vendor_id
+        description: 'TPEP provider code.'
+      - name: pickup_datetime
+        description: 'Pickup date and time.'
+      - name: dropoff_datetime
+        description: 'Dropoff date and time.'
+      - name: passenger_count
+        description: 'Number of passengers.'
+      - name: trip_distance
+        description: 'Trip distance in miles.'
+      - name: rate_code_id
+        description: 'Rate code at trip end.'
+      - name: store_and_fwd_flag
+        description: 'Indicates if trip data was stored.'
+      - name: pickup_location_id
+        description: 'Pickup location zone.'
+      - name: dropoff_location_id
+        description: 'Dropoff location zone.'
+      - name: payment_type
+        description: 'Payment method code.'
+      - name: fare_amount
+        description: 'Time and distance fare.'
+      - name: extra
+        description: 'Miscellaneous extras and surcharges.'
+      - name: mta_tax
+        description: 'MTA tax amount.'
+      - name: tip_amount
+        description: 'Credit card tip amount.'
+      - name: tolls_amount
+        description: 'Total toll amount.'
+      - name: improvement_surcharge
+        description: 'Improvement surcharge amount.'
+      - name: total_amount
+        description: 'Total amount charged.'
+      - name: congestion_surcharge
+        description: 'Congestion surcharge amount.'
+      - name: email_fee
+        description: 'Email fee amount.'
+      - name: trip_type
+        description: 'Trip type code.'
   - name: stg_yellow_taxi
     description: "Cleaned yellow taxi data"
     columns:
