@@ -5,7 +5,7 @@
 }}
 
 SELECT
-    TRUNC(pickup_datetime) AS trip_date,
+    TO_CHAR(TRUNC(pickup_datetime),'YYYY-MM') AS trip_month,
     COUNT(1) AS total_trips,
     SUM(passenger_count) AS total_passengers,
     SUM(trip_distance) AS total_trip_distance,
@@ -15,5 +15,5 @@ SELECT
     CURRENT_TIMESTAMP AS refresh_date
 FROM {{ ref('stg_yellow_taxi') }}
 GROUP BY
-    TRUNC(pickup_datetime)
+    TO_CHAR(TRUNC(pickup_datetime),'YYYY-MM')
 ORDER BY 1 ASC
