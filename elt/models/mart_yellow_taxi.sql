@@ -6,7 +6,7 @@
 
 SELECT
     TRUNC(pickup_datetime) AS trip_date,
-    COUNT(trip_id) AS total_trips,
+    COUNT(1) AS total_trips,
     SUM(passenger_count) AS total_passengers,
     SUM(trip_distance) AS total_trip_distance,
     SUM(fare_amount) AS total_fare_amount,
@@ -16,3 +16,4 @@ SELECT
 FROM {{ ref('stg_yellow_taxi') }}
 GROUP BY
     TRUNC(pickup_datetime)
+ORDER BY 1 ASC

@@ -5,36 +5,32 @@
 ) }}
 
 WITH L1 AS (
-
-    SELECT
-        ROWNUM as rn,
-        a."VENDORID",
-        a."TPEP_PICKUP_DATETIME",
-        a."TPEP_DROPOFF_DATETIME",
-        a."PASSENGER_COUNT",
-        a."TRIP_DISTANCE",
-        a."RATECODEID",
-        a."STORE_AND_FWD_FLAG",
-        a."PULOCATIONID",
-        a."DOLOCATIONID",
-        a."PAYMENT_TYPE",
-        a."FARE_AMOUNT",
-        a."EXTRA",
-        a."MTA_TAX",
-        a."TIP_AMOUNT",
-        a."TOLLS_AMOUNT",
-        a."IMPROVEMENT_SURCHARGE",
-        a."TOTAL_AMOUNT",
-        a."CONGESTION_SURCHARGE",
-        a."AIRPORT_FEE"
-    FROM {{ source('pdave', 'RAW_YELLOW_TAXI') }} a
-
+SELECT
+    cast(to_char(VENDORID) as number) as VENDORID,
+    TPEP_PICKUP_DATETIME,
+    TPEP_DROPOFF_DATETIME,
+    cast(to_char(PASSENGER_COUNT) as number) as PASSENGER_COUNT,
+    cast(to_char(TRIP_DISTANCE) as number) as TRIP_DISTANCE,
+    cast(to_char(RATECODEID) as number) as RATECODEID,
+    to_char(STORE_AND_FWD_FLAG) as STORE_AND_FWD_FLAG
+    ,cast(to_char(PULOCATIONID) as number) as PULOCATIONID,
+    cast(to_char(DOLOCATIONID) as number) as DOLOCATIONID,
+    cast(to_char(PAYMENT_TYPE) as number) as PAYMENT_TYPE,
+    cast(to_char(FARE_AMOUNT) as number) as FARE_AMOUNT,
+    cast(to_char(EXTRA) as number) as EXTRA,
+    cast(to_char(MTA_TAX) as number) as MTA_TAX,
+    cast(to_char(TIP_AMOUNT) as number) as TIP_AMOUNT,
+    cast(to_char(TOLLS_AMOUNT) as number) as TOLLS_AMOUNT,
+    cast(to_char(IMPROVEMENT_SURCHARGE) as number) as IMPROVEMENT_SURCHARGE,
+    cast(to_char(TOTAL_AMOUNT) as number) as TOTAL_AMOUNT,
+    cast(to_char(CONGESTION_SURCHARGE) as number) as CONGESTION_SURCHARGE,
+    cast(to_char(AIRPORT_FEE) as number) as AIRPORT_FEE
+    FROM {{ source('pdave', 'RAW_YELLOW_TRIPDATA') }}
 ),
 
 renamed AS (
 
     SELECT
-        rn AS trip_id,
         "VENDORID" AS vendor_id,
         "TPEP_PICKUP_DATETIME" AS pickup_datetime,
         "TPEP_DROPOFF_DATETIME" AS dropoff_datetime,

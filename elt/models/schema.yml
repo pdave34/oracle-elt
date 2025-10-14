@@ -4,7 +4,7 @@ version: 2
 sources:
   - name: pdave
     tables:
-      - name: RAW_YELLOW_TAXI
+      - name: RAW_YELLOW_TRIPDATA
         columns:
           - name: VENDORID
             description: 'TPEP provider code.'
@@ -51,11 +51,6 @@ models:
   - name: stg_yellow_taxi
     description: "Cleaned yellow taxi data"
     columns:
-      - name: trip_id
-        description: "Primary key for the table."
-        tests:
-          - unique
-          - not_null
       - name: vendor_id
         description: 'TPEP provider code.'
       - name: pickup_datetime
