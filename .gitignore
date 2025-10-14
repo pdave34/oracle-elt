@@ -16,6 +16,9 @@ logs/
 */*.log
 *.log
 .vscode/
+package.json
+package-lock.json
+*.gitignore
 
 .DS_Store
 *.parquet
