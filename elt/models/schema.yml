@@ -143,5 +143,20 @@ models:
         description: 'Average speed in miles per hour.'
       - name: pickup_hour
         description: 'Pickup hour of the day.'
+  - name: mart_green_taxi
+    description: "Green taxi data aggregated by month."
+    columns:
+      - name: month
+        description: 'Month in YYYY-MM format.'
+      - name: total_trips
+        description: 'Total number of trips in the month.'
+      - name: total_passengers
+        description: 'Total number of passengers in the month.'
+      - name: total_tip_amount
+        description: 'Total tip amount in the month.'
+      - name: total_revenue
+        description: 'Total revenue in the month.'
+      - name: refresh_date
+        description: 'Timestamp when the data was last refreshed.'
   - name: dbt_run_results
     description: "Table to store dbt run results."
