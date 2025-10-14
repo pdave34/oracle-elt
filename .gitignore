@@ -15,6 +15,7 @@ docker-images/
 logs/
 */*.log
 *.log
+.vscode/
 
 .DS_Store
 *.parquet
