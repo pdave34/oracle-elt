@@ -18,4 +18,5 @@ dependencies = [
     "beautifulsoup4>=4.14.2",
     "fastparquet>=2024.11.0",
     "sqlalchemy>=2.0.44",
+    "pyarrow==21.0.0",
 ]
