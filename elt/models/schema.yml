@@ -134,17 +134,8 @@ models:
         description: 'Congestion surcharge amount.'
       - name: airport_fee
         description: 'Airport fee for pickups.'
-  - name: mart_yellow_taxi
-    description: "Yellow taxi data with trip and time features."
-    columns:
-      - name: trip_duration_minutes
-        description: 'Trip duration in minutes.'
-      - name: average_speed_mph
-        description: 'Average speed in miles per hour.'
-      - name: pickup_hour
-        description: 'Pickup hour of the day.'
-  - name: mart_green_taxi
-    description: "Green taxi data aggregated by month."
+  - name: mart_taxi_tripdata
+    description: "Taxi trip data aggregated by month."
     columns:
       - name: month
         description: 'Month in YYYY-MM format.'
@@ -156,6 +147,8 @@ models:
         description: 'Total tip amount in the month.'
       - name: total_revenue
         description: 'Total revenue in the month.'
+      - name: taxi_type
+        description: 'Type of taxi (green or yellow).'
       - name: refresh_date
         description: 'Timestamp when the data was last refreshed.'
   - name: dbt_run_results
