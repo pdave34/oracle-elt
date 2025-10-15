@@ -1,0 +1,20 @@
+FIELD,CODE,VALUE
+VENDORID,1,"Creative Mobile Technologies, LLC"
+VENDORID,2,"Curb Mobility, LLC"
+VENDORID,6,Myle Technologies Inc
+RATECODEID,1,Standard rate
+RATECODEID,2,JFK
+RATECODEID,3,Newark
+RATECODEID,4,Nassau or Westchester
+RATECODEID,5,Negotiated fare
+RATECODEID,6,Group ride
+RATECODEID,99,Null/unknown
+PAYMENT_TYPE,0,Flex Fare trip
+PAYMENT_TYPE,1,Credit card
+PAYMENT_TYPE,2,Cash
+PAYMENT_TYPE,3,No charge
+PAYMENT_TYPE,4,Dispute
+PAYMENT_TYPE,5,Unknown
+PAYMENT_TYPE,6,Voided trip
+TRIP_TYPE,1,Street-hail
+TRIP_TYPE,2,Dispatch

@@ -25,3 +25,21 @@ seeds:
       - name: service_zone
         data_tests:
           - not_null
+  - name: DIM_YELLOW_TAXI
+    description: "Dimension table for yellow taxi zones."
+    config:
+      column_types:
+        FIELD: VARCHAR2(50)
+        CODE: NUMBER(4)
+        VALUE: VARCHAR2(50)
+      docs:
+        node_color: "#33FF57"
+  - name: DIM_GREEN_TAXI
+    description: "Dimension table for yellow taxi zones."
+    config:
+      column_types:
+        FIELD: VARCHAR2(50)
+        CODE: NUMBER(4)
+        VALUE: VARCHAR2(50)
+      docs:
+        node_color: "#33FF57"
