@@ -34,7 +34,17 @@ RR as (
     union all
     select y.*, 'YELLOW' as taxi_type
     from yellow y)
-select RR.*, CURRENT_TIMESTAMP AS refresh_date
+select
+    cast(STANDARD_HASH(RR.trip_month || RR.taxi_type, 'SHA256') as varchar2(256)) AS trip_id
+    , cast(RR.trip_month as varchar2(7)) AS trip_month
+    , RR.total_trips
+    , RR.total_passengers
+    , RR.total_trip_distance
+    , RR.total_fare_amount
+    , RR.total_tip_amount
+    , RR.total_revenue
+    , RR.taxi_type
+    , cast(CURRENT_TIMESTAMP as timestamp) AS refresh_date
 from RR
 order by 
     RR.trip_month ASC, 

@@ -45,6 +45,18 @@ sources:
           - name: AIRPORT_FEE
             description: 'Airport fee for pickups.'
       - name: RAW_GREEN_TRIPDATA
+      - name: RAW_FHV_TRIPDATA
+        columns:
+          - name: PULOCATIONID
+            description: 'Pickup location zone.'
+            data_tests:
+              - not_null:
+                  config:
+                    severity: warn
+          - name: DOLOCATIONID
+            description: 'Dropoff location zone.'
+
+      - name: RAW_HVFHV_TRIPDATA
 
 
 models:
@@ -136,20 +148,45 @@ models:
         description: 'Airport fee for pickups.'
   - name: mart_taxi_tripdata
     description: "Taxi trip data aggregated by month."
+    config:
+      contract:
+        enforced: true
     columns:
-      - name: month
+      - name: trip_id
+        description: 'Unique identifier for each trip.'
+        data_type: string
+        data_tests:
+          - not_null
+          - unique
+        constraints:
+          - type: primary_key
+      - name: trip_month
         description: 'Month in YYYY-MM format.'
+        data_type: string
       - name: total_trips
         description: 'Total number of trips in the month.'
+        data_type: number
       - name: total_passengers
         description: 'Total number of passengers in the month.'
+        data_type: number
+      - name: total_trip_distance
+        description: 'Total trip distance in miles for the month.'
+        data_type: number
+      - name: total_fare_amount
+        description: 'Total fare amount in the month.'
+        data_type: number
       - name: total_tip_amount
         description: 'Total tip amount in the month.'
+        data_type: number
       - name: total_revenue
         description: 'Total revenue in the month.'
+        data_type: number
       - name: taxi_type
         description: 'Type of taxi (green or yellow).'
+        data_type: string
       - name: refresh_date
         description: 'Timestamp when the data was last refreshed.'
+        data_type: timestamp
+
   - name: dbt_run_results
     description: "Table to store dbt run results."
