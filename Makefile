@@ -1,4 +1,4 @@
-.PHONY: setup-oracle stop-oracle start-oracle dbt-debug dbt-build dbt-test dagster-run
+.PHONY: setup-oracle stop-oracle start-oracle dbt-debug dbt-build dbt-test dbt-seed dbt-ls-seeds dagster-run
 
 setup-oracle:
 	docker run -d --name oracle-19c \
@@ -26,6 +26,14 @@ dbt-build:
 dbt-test:
 	source .venv/bin/activate && \
 	dbt test --profiles-dir ./elt --project-dir ./elt
+
+dbt-seed:
+	source .venv/bin/activate && \
+	dbt seed --profiles-dir ./elt --project-dir ./elt
+
+dbt-ls-seeds:
+	source .venv/bin/activate && \
+	dbt ls --resource-type seed --profiles-dir ./elt --project-dir ./elt
 
 dagster-run:
 	dagster dev -f dagster_project/repository.py

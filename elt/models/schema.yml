@@ -58,7 +58,6 @@ sources:
 
       - name: RAW_HVFHV_TRIPDATA
 
-
 models:
   - name: dim_calendar
     description: "A calendar dimension table"

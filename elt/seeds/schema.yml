@@ -43,3 +43,5 @@ seeds:
         VALUE: VARCHAR2(50)
       docs:
         node_color: "#33FF57"
+  - name: SUPPLY
+  - name: INIT_REPLEN
